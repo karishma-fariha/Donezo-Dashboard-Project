@@ -1,16 +1,79 @@
-# React + Vite
+🚀 Donezo Dashboard
+Donezo Dashboard is a premium, high-performance SaaS admin interface built with React 19, Tailwind CSS, and Framer Motion. It features real-time data visualization, a functional product catalog with cart management, and a robust authentication system.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Key Features
+📊 Advanced Analytics: Interactive data visualization using Recharts to track views, clicks, and conversions.
 
-Currently, two official plugins are available:
+🛒 Product Management: A sleek product catalog with "Add to Cart" functionality and real-time counter updates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👥 User Management: Animated tables displaying user status, join dates, and contact information.
 
-## React Compiler
+🛡️ Secure Authentication: Full login/logout flow integrated with JWT tokens and React Toastify for feedback.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+📱 Fully Responsive: Optimized for all screen sizes with a sticky, scroll-locked sidebar.
 
-## Expanding the ESLint configuration
+🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Category          Technology
+Frontend      "React.js (Vite), Tailwind CSS"
+Animations     Framer Motion
+Icons          Lucide React, React icons
+Charts         Recharts
+State/UI      "React Hooks, React Toastify"
+Routing        React Router 7
+
+🔌 API Endpoints Integrated
+This project communicates with a live backend API to fetch real-time data:
+
+Overview: GET /api/overview (Total users, revenue, growth)
+
+Users: GET /api/users (Member list and status)
+
+Products: GET /api/products (Subscription plans and sales)
+
+Analytics: GET /api/analytics (Time-series data for charts)
+
+Auth: POST /api/login (Secure token generation)
+
+
+🚀 Getting Started
+1. Clone the repository
+
+git clone https://github.com/your-username/donezo-dashboard.git
+cd donezo-dashboard
+
+2. Install dependencies
+
+npm install
+
+3. Run the development server
+
+npm run dev
+
+📂 Project Structure
+
+src/
+├── components/
+│   ├── Sidebar.jsx      # Sticky navigation with logout logic
+│   ├── ProductCard.jsx  # Individual product logic & animations
+├── pages/
+│   ├── Overview.jsx     # High-level system stats
+│   ├── Analytics.jsx    # Bar & Donut charts
+│   ├── Users.jsx        # Data table for user management
+│   ├── Products.jsx     # Grid layout with Cart functionality
+│   ├── Settings.jsx     # Dark mode & profile settings
+│   ├── Login.jsx        # Auth page with Toastify alerts
+└── App.jsx              # Routing & Protected routes
+
+
+🎨 UI/UX Highlights
+Sticky Sidebar: Remains fixed while the main content area scrolls, using sticky top-0 h-screen.
+
+Staggered Animations: List items and grid cards slide into view using Framer Motion variants.
+
+Feedback Loops: Every user action (Login, Logout, Add to Cart) is met with a visual toast or icon state change.
+
+Devloped by
+ 
+Karishma Fariha
+📧 Email: karishmafarihakathi10@gmail.com
