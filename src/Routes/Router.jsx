@@ -10,6 +10,7 @@ import Settings from "../Pages/Settings";
 import Help from "../Pages/Help";
 import User from "../Pages/User";
 import Product from "../Pages/Product";
+import Overview from "../Pages/Overview";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
         {
             path:"dashboard",
             element:<Dashboard></Dashboard>
+        },
+        {
+            path:"overview",
+            element:<Overview></Overview>
         },
         {
             path:"users",

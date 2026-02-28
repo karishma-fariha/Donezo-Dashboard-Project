@@ -9,24 +9,22 @@ const Login = () => {
 
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevents the page from refreshing
+    e.preventDefault(); 
     setError('');
 
     try {
       const response = await fetch('https://task-api-eight-flax.vercel.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }), // Sends your state to the external API
+        body: JSON.stringify({ email, password }), 
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // If the API says "Yes", save the token and go to Dashboard
         localStorage.setItem('token', data.token);
         navigate('/dashboard');
       } else {
-        // If the API says "No" (wrong password/email), show the error
         setError('Invalid email or password');
       }
     } catch (err) {
@@ -37,10 +35,8 @@ const Login = () => {
     return (
  <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       
-      {/* Login Card */}
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl shadow-slate-200/60 p-8 md:p-12">
         
-        {/* Header */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
           <p className="text-slate-500">Please enter your details to sign in</p>
@@ -48,7 +44,6 @@ const Login = () => {
 
         <form onSubmit={handleLogin} className="space-y-6">
           
-          {/* Email Field */}
           <div>
             <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
             <input 
@@ -61,7 +56,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Password Field */}
           <div>
             <label className="block text-sm font-semibold text-slate-700 mb-2">Password</label>
             <input 
@@ -74,14 +68,12 @@ const Login = () => {
             />
           </div>
 
-          {/* Error Message */}
           {error && (
             <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm text-center">
               {error}
             </div>
           )}
 
-          {/* Submit Button */}
           <button 
             type="submit"
             className="w-full bg-green-900 hover:bg-green-950 text-white font-semibold py-3 rounded-xl shadow-lg shadow-indigo-200 transition-all active:scale-[0.98]"
@@ -91,9 +83,8 @@ const Login = () => {
           
         </form>
 
-        {/* Footer/Sign Up Link (Optional UI detail) */}
         <p className="text-center text-slate-500 mt-8 text-sm">
-          Don't have an account? <span className="text-indigo-600 font-semibold cursor-pointer">Contact Admin</span>
+          Don't have an account? <span className="text-green-900 font-semibold cursor-pointer">Contact Admin</span>
         </p>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router";
 import {
+    Globe,
   LayoutDashboard,
   Package,
   BarChart2,
@@ -15,6 +16,7 @@ const menuConfig = [
     section: "MENU",
     items: [
       { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+      { name: "Overview", path: "/overview", icon: Globe },
       { name: "Users", path: "/users",icon: Users },
       { name: "Products", path: "/products", icon:Package },
       { name: "Analytics", path: "/analytics", icon: BarChart2 },
