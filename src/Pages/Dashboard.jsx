@@ -54,10 +54,10 @@ const Dashboard = () => {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <StatCard title="Total Projects" value={overview?.totalUsers} subtext="Increased from last month" />
-                <StatCard title="Running Projects" value={overview?.activeUsers} subtext="Increased from last month" />
-                <StatCard title="Ended Projects" value={10} subtext="Increased from last month" />
-                <StatCard title="Pending Project" value={2} subtext="On Discussion" noArrow />
+                <StatCard title="Total Users" value={overview?.totalUsers} subtext="Increased from last month" />
+                <StatCard title="Active Users" value={overview?.activeUsers} subtext="Increased from last month" />
+                <StatCard title="Revenue" value={10} subtext="Increased from last month" />
+                <StatCard title="Growth" value={2} subtext="On Discussion" noArrow />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
