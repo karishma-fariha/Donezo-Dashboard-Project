@@ -8,7 +8,7 @@ import user from "../assets/user.png"
 const DashboardLayout = () => {
     return (
         <div className="flex min-h-screen p-4 gap-4 bg-white">
-            <div className="">
+            <div className="sticky top-0 h-screen">
                 <Sidebar />
             </div>
 

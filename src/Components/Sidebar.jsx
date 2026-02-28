@@ -1,8 +1,7 @@
 import { NavLink, useNavigate } from "react-router";
 import {
   LayoutDashboard,
-  CheckSquare,
-  Calendar,
+  Package,
   BarChart2,
   Users,
   Settings,
@@ -16,10 +15,9 @@ const menuConfig = [
     section: "MENU",
     items: [
       { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-      { name: "Tasks", path: "/tasks", icon: CheckSquare, badge: "12+" },
-      { name: "Calendar", path: "/calendar", icon: Calendar },
+      { name: "Users", path: "/users",icon: Users },
+      { name: "Products", path: "/products", icon:Package },
       { name: "Analytics", path: "/analytics", icon: BarChart2 },
-      { name: "Team", path: "/team", icon: Users }
     ]
   },
   {

@@ -4,12 +4,12 @@ import Login from "../Pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "../Pages/Dashboard";
 import DashboardLayout from "../Layout/DashboardLayout";
-import Task from "../Pages/Task";
-import Calendar from "../Pages/Calendar";
 import Analytics from "../Pages/Analytics";
 import Team from "../Pages/Team";
 import Settings from "../Pages/Settings";
 import Help from "../Pages/Help";
+import User from "../Pages/User";
+import Product from "../Pages/Product";
 
 export const router = createBrowserRouter([
   {
@@ -37,20 +37,16 @@ export const router = createBrowserRouter([
             element:<Dashboard></Dashboard>
         },
         {
-            path:"tasks",
-            element:<Task></Task>
+            path:"users",
+            element:<User></User>
         },
         {
-            path:"calendar",
-            element:<Calendar></Calendar>
+            path:"products",
+            element:<Product></Product>
         },
         {
             path:"analytics",
             element:<Analytics></Analytics>
-        },
-        {
-            path:"team",
-            element:<Team></Team>
         },
         {
             path:"settings",
