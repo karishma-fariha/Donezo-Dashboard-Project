@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import {
   LayoutDashboard,
   CheckSquare,
@@ -9,7 +9,7 @@ import {
   HelpCircle,
   LogOut
 } from "lucide-react";
-import logo from "../assets/Image.png"
+import logo from "../assets/Image.png";
 
 const menuConfig = [
   {
@@ -33,12 +33,19 @@ const menuConfig = [
 ];
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
+  };
+
   return (
     <aside className="w-64 h-screen bg-[#F7F7F7] rounded-2xl p-4 flex flex-col shadow-md">
       {/* Logo */}
       <div className="flex items-center gap-3 px-2 mb-8">
         <div className="w-10 h-10 flex items-center justify-center font-bold">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </div>
         <span className="text-xl font-semibold text-gray-800">
           Donezo
@@ -54,46 +61,46 @@ export default function Sidebar() {
             </p>
 
             <ul className="space-y-1">
-              {group.items.map((item) => (
-                <li key={item.name}>
-                  <NavLink
-                    to={item.path}
-                    end
-                    className={({ isActive }) =>
-                      `
-                      flex items-center justify-between px-3 py-2 rounded-lg
-                      transition-all duration-200 group
-                      ${
-                        isActive
-                          ? "bg-green-700 text-white shadow"
-                          : "text-gray-600 hover:bg-green-50 hover:text-green-700"
-                      }
-                      `
-                    }
-                  >
-                    <div className="flex items-center gap-3">
-                      <item.icon
-                        size={18}
-                        className="transition-transform group-hover:scale-110"
-                      />
-                      <span className="text-sm font-medium">
-                        {item.name}
-                      </span>
-                    </div>
+              {group.items.map((item) => {
+                const isLogout = item.name === "Logout";
 
-                    {item.badge && (
-                      <span
-                        className="
-                        text-xs font-semibold px-2 py-0.5 rounded-full
-                        bg-green-100 text-green-700
-                      "
-                      >
-                        {item.badge}
-                      </span>
-                    )}
-                  </NavLink>
-                </li>
-              ))}
+                return (
+                  <li key={item.name}>
+                    <NavLink
+                      to={isLogout ? "#" : item.path}
+                      end
+                      onClick={isLogout ? handleLogout : undefined}
+                      className={({ isActive }) =>
+                        `
+                        flex items-center justify-between px-3 py-2 rounded-lg
+                        transition-all duration-200 group
+                        ${
+                          isActive && !isLogout
+                            ? "bg-green-900 text-white shadow"
+                            : "text-gray-600 hover:bg-green-50 hover:text-green-900"
+                        }
+                        `
+                      }
+                    >
+                      <div className="flex items-center gap-3">
+                        <item.icon
+                          size={18}
+                          className="transition-transform group-hover:scale-110"
+                        />
+                        <span className="text-sm font-medium">
+                          {item.name}
+                        </span>
+                      </div>
+
+                      {/* {item.badge && ( 
+                         <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                           {item.badge}
+                         </span>
+                    )} */}
+                    </NavLink>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}
@@ -107,13 +114,7 @@ export default function Sidebar() {
         <p className="text-xs text-green-100 mt-1">
           Get easy access anytime
         </p>
-        <button
-          className="
-          mt-3 w-full bg-white text-green-800 text-sm font-semibold
-          py-2 rounded-lg transition-transform
-          hover:scale-[1.03]
-        "
-        >
+        <button className="mt-3 w-full bg-white text-green-900 text-sm font-semibold py-2 rounded-lg transition-transform hover:scale-[1.03]">
           Download
         </button>
       </div>
