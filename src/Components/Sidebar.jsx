@@ -1,6 +1,9 @@
 import { NavLink, useNavigate } from "react-router";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
-    Globe,
+  Globe,
   LayoutDashboard,
   Package,
   BarChart2,
@@ -17,8 +20,8 @@ const menuConfig = [
     items: [
       { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
       { name: "Overview", path: "/overview", icon: Globe },
-      { name: "Users", path: "/users",icon: Users },
-      { name: "Products", path: "/products", icon:Package },
+      { name: "Users", path: "/users", icon: Users },
+      { name: "Products", path: "/products", icon: Package },
       { name: "Analytics", path: "/analytics", icon: BarChart2 },
     ]
   },
@@ -36,13 +39,25 @@ export default function Sidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login", { replace: true });
+    toast.info("Logging out...", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+    });
+
+    setTimeout(() => {
+      localStorage.removeItem("token");
+      navigate("/login", { replace: true });
+    }, 1500);
   };
 
   return (
     <aside className="w-64 h-screen bg-[#F7F7F7] rounded-2xl p-4 flex flex-col shadow-md">
-      {/* Logo */}
+      <ToastContainer />
+
       <div className="flex items-center gap-3 px-2 mb-8">
         <div className="w-10 h-10 flex items-center justify-center font-bold">
           <img src={logo} alt="logo" />
@@ -52,7 +67,6 @@ export default function Sidebar() {
         </span>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 space-y-6">
         {menuConfig.map((group) => (
           <div key={group.section}>
@@ -91,12 +105,6 @@ export default function Sidebar() {
                           {item.name}
                         </span>
                       </div>
-
-                      {/* {item.badge && ( 
-                         <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700">
-                           {item.badge}
-                         </span>
-                    )} */}
                     </NavLink>
                   </li>
                 );
@@ -106,7 +114,6 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Download Card */}
       <div className="mt-6 bg-linear-to-br from-green-800 to-green-900 rounded-xl p-4 text-white">
         <p className="text-sm font-semibold">
           Download our Mobile App

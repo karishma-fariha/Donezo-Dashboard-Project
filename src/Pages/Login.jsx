@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
 
   const handleLogin = async (e) => {
     e.preventDefault(); 
@@ -23,17 +24,27 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
-        navigate('/dashboard');
+        toast.success('Login Successfully!...', {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        
+        setTimeout(() => navigate('/dashboard'), 2000);
       } else {
-        setError('Invalid email or password');
+        const msg = 'Invalid email or password';
+        setError(msg);
+        toast.error(msg);
       }
     } catch (err) {
-      setError('Server is down. Try again later.');
+      const msg = 'Server is down. Try again later.';
+      setError(msg);
+      toast.error(msg);
     }
   };
 
     return (
- <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+      <ToastContainer />
       
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl shadow-slate-200/60 p-8 md:p-12">
         
@@ -49,7 +60,7 @@ const Login = () => {
             <input 
               type="email" 
               placeholder="name@company.com"
-              className="w-full px-4 py-3 rounded-xl text-black border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+              className="w-full px-4 py-3 rounded-xl text-black border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-green-500 transition-all"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -61,7 +72,7 @@ const Login = () => {
             <input 
               type="password" 
               placeholder="••••••••"
-              className="w-full px-4 py-3 rounded-xl text-black border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+              className="w-full px-4 py-3 rounded-xl text-black border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-green-500 transition-all"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
