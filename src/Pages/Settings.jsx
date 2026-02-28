@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { User, Lock, Bell, Shield, Moon, ChevronRight } from 'lucide-react';
-import ThemeToggle from '../Components/ThemeToggle';
 
 const Settings = () => {
     return (
